@@ -140,13 +140,12 @@ inline void LinElastic2D::TgStiffness(Matrix<double> & De) const
 
 inline int LinElastic2D::StressUpdate(Vector<double> const & DEps, Vector<double> & DSig)
 {
-	Tensor2_2d deps;  deps = DEps(0), DEps(1), DEps(2);
-	Tensor2_2d dsig;
-	dsig = blitz::product(_De, deps);
-	_eps += deps;
-	_sig += dsig;
 	DSig.Resize(3);
-	DSig = dsig(0), dsig(1), dsig(2);
+	DSig(0) = _De(0,0)*DEps(0) + _De(0,1)*DEps(1) + _De(0,2)*DEps(2);
+	DSig(1) = _De(1,0)*DEps(0) + _De(1,1)*DEps(1) + _De(1,2)*DEps(2);
+	DSig(2) = _De(2,0)*DEps(0) + _De(2,1)*DEps(1) + _De(2,2)*DEps(2);
+	_sig(0) += DSig(0);  _sig(1) += DSig(1);  _sig(2) += DSig(2);
+	_eps(0) += DEps(0);  _eps(1) += DEps(1);  _eps(2) += DEps(2);
 	return 1;
 }
 
