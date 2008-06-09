@@ -1,3 +1,5 @@
+tst/ttri6
+
 syntax: glob
 CMakeCache.txt
 CMakeFiles
