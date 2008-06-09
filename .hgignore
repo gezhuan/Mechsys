@@ -1,0 +1,10 @@
+tst/ttri6
+
+syntax: glob
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+*.swp
+.cproject
+.project
