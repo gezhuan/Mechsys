@@ -142,7 +142,7 @@ inline int LinElastic2D::StressUpdate(Vector<double> const & DEps, Vector<double
 {
 	Tensor2_2d deps;  deps = DEps(0), DEps(1), DEps(2);
 	Tensor2_2d dsig;
-	blitz::product(_De, deps);
+	dsig = blitz::product(_De, deps);
 	_eps += deps;
 	_sig += dsig;
 	DSig.Resize(3);
